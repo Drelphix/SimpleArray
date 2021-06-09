@@ -1,14 +1,14 @@
-<Configuration status="WARN">
+<Configuration status="info">
     <Appenders>
         <Console name="LogToConsole" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="com.mkyong" level="debug" additivity="false">
+        <Logger name="by.demeshko.array" level="info" additivity="false">
             <AppenderRef ref="LogToConsole"/>
         </Logger>
-        <Root level="error">
+        <Root level="info">
             <AppenderRef ref="LogToConsole"/>
         </Root>
     </Loggers>

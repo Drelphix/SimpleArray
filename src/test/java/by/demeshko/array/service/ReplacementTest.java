@@ -13,7 +13,6 @@ public class ReplacementTest {
     public void testReplaceIfZero() {
         SimpleArray testArray = new SimpleArray(ARRAY_WITH_ZERO);
         testArray = replacement.replaceIfZero(testArray);
-
         Assert.assertArrayEquals(EXPECTED_ARRAY, testArray.getArray());
     }
 

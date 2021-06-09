@@ -2,10 +2,10 @@ package by.demeshko.array.service;
 
 import by.demeshko.array.entity.SimpleArray;
 
-public class Defenition{
+public class Definition {
 
     public double findAverage(SimpleArray simpleArray){
-        return findSum(simpleArray)/simpleArray.getLength();
+        return (double) findSum(simpleArray)/simpleArray.getLength();
     }
 
     public int findSum(SimpleArray simpleArray){

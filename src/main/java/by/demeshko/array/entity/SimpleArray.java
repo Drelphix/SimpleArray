@@ -38,12 +38,14 @@ package by.demeshko.array.entity;
 
 public class SimpleArray {
     private int[] array;
+    private int length;
 
     public SimpleArray() {
     }
 
-    public SimpleArray(int[] simpleArray) {
-        this.array = simpleArray;
+    public SimpleArray(int[] array) {
+        this.array = array;
+        this.length = array.length;
     }
 
     public int[] getArray() {
@@ -52,6 +54,7 @@ public class SimpleArray {
 
     public void setArray(int[] array) {
         this.array = array;
+        this.length = array.length;
     }
 
     public int getItem(int position) {
@@ -63,7 +66,7 @@ public class SimpleArray {
     }
 
     public int getLength() {
-        return this.array.length;
+        return this.length;
     }
 
 }

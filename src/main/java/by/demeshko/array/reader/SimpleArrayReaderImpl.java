@@ -16,8 +16,7 @@ import java.util.regex.Pattern;
 public class SimpleArrayReaderImpl {
     private static final String DEFAULT_ARRAY_FILE_PATH = "D:\\java\\SimpleArray\\files\\SimpleArrayTest.txt";
     private static final Logger logger = LogManager.getLogger();
-    //private static final String REGEX = "\\d,| \\d -| \\d;|\\d ";
-    private static final String REGEX = "\\d,+";
+    private static final String REGEX = "\\d,+";  //TODO
     private String filePath;
 
     public SimpleArrayReaderImpl() {

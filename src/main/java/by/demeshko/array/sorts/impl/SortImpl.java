@@ -77,7 +77,7 @@ public class SortImpl implements Sort {
 
     }
 
-    public void sortMergeSort(SimpleArray simpleArray) {
+    public void sortMergeSort(SimpleArray simpleArray) {  //TODO
         try {
             ArrayValidator.checkArrayLength(simpleArray.getArray());
             if (simpleArray.getArray().length == 1) {

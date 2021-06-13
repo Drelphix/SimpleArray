@@ -1,72 +1,79 @@
 package by.demeshko.array.entity;
 
-/*
- *    Разработать entity-класс, например: «класс Массив»
- *        ➢ Entity-класс не следует наполнять методами, выполняющими функциональные действия
- *        (методами бизнес-логики, такими как вычисление, поиск и т.д.).
- *        ➢ Все классы приложения должны быть структурированы по пакетам (package).
- *        ➢ Оформление кода должно соответствовать Java Code Convention.
- *        ➢ Для записи логов использовать Log4J2
- *        ➢ Разработать тесты на TestNG.
- *        ➢ Решение задания хранить на Github.
- *        ➢ Методы класса Objects использовать запрещено.
- *
- *    Part 1
- *        ➢ Создать класс Массив.
- *        ➢ Разработать service-классы реализующие функциональности:
- *            • поиск min\max значения массива,
- *            • замену элементов массива по условию,
- *            • определение среднего значения элементов массива,
- *            • определение суммы элементов массива,
- *            • определение числа положительных\отрицательных элементов массива.
- *
- *    Part 2
- *         ➢ Сортировка массива тремя различными алгоритмами.
- *         ➢ Параметры, необходимые для создания массивов, получить чтением информации из файла
- *              (.txt). Часть данных должна быть некорректной. Если встретилась некорректная
- *              строка, приложение должно переходить к следующей строке. Чтение может быть
- *              прекращено по достижении первой корректной строки. Файл данных должен находиться в
- *              отдельном каталоге.
- *         ➢ Для чтения из файла можно использовать методы, появившиеся в Java8.
- *         ➢ Использовать собственные классы исключительных ситуаций.
- *         ➢ Разработать validation-классы для валидации исходных данных при создании массивов.
- *             Например: корректная строка в файле для создания массива: «1, 2, 3» или «1 – 2 - 3» или «3 4 7»
- *             Некорректная строка в файле для создания массива: «1z1 21 32». Присутствует недопустимый символ
- *             «z», следовательно всю строку следует считать некорректной.
- */
-
+import by.demeshko.array.exception.ArrayException;
+import by.demeshko.array.validator.ArrayValidator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SimpleArray {
+    private static final Logger logger = LogManager.getLogger();
     private int[] array;
-    private int length;
-
-    public SimpleArray() {
-    }
 
     public SimpleArray(int[] array) {
         this.array = array;
-        this.length = array.length;
     }
 
     public int[] getArray() {
+        try {
+            ArrayValidator.checkArrayLength(array);
+        } catch (ArrayException e){
+            logger.error("Массив не задан!");
+            e.printStackTrace();
+        }
         return array;
     }
 
     public void setArray(int[] array) {
         this.array = array;
-        this.length = array.length;
     }
 
     public int getItem(int position) {
-        return array[position];
+        try {
+            ArrayValidator.checkPosition(position, this.array);
+            return array[position];
+        } catch (ArrayException e){
+            logger.error("Такой позиции не существует в массиве!");
+            e.printStackTrace();
+        }
+        return 0;
     }
 
-    public void setItem(int item, int position) {
-        this.array[position] = item;
+    public void setItem(int item, int position){
+        try {
+            ArrayValidator.checkPosition(position, this.array);
+            this.array[position] = item;
+        } catch (ArrayException e){
+            logger.error("Такой позиции не существует в массиве!");
+            e.printStackTrace();
+        }
     }
 
     public int getLength() {
-        return this.length;
+        return this.array.length;
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Current array is: ");
+        for (int i : this.array){
+            stringBuilder.append(i);
+            stringBuilder.append(" ");
+        }
+        return stringBuilder.toString();
+    }
+
+    public boolean equals(SimpleArray simpleArray){
+        if(simpleArray.getLength() == this.array.length) {
+            for (int i = 0; i < this.array.length; i++) {
+                if(simpleArray.array[i] != this.array[i]){
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

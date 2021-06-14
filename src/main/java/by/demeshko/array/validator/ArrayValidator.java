@@ -4,6 +4,8 @@ import by.demeshko.array.exception.ArrayException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.regex.Pattern;
+
 public class ArrayValidator {
 
     private static final Logger logger = LogManager.getLogger();
@@ -26,9 +28,17 @@ public class ArrayValidator {
         }
     }
 
-    public static boolean checkCorrectArrayLine(String line, String regex){
-        logger.info(line);
-        logger.info(line.matches(regex));
-        return line.matches(regex);
+    public static int[] checkCorrectArrayLine(String line, String regex){
+        Pattern arrayPattern = Pattern.compile(regex);
+        String[] inputArray = arrayPattern.split(line);
+        int[] finalArray = new int[inputArray.length];
+        try {
+            for (int i = 0; i < inputArray.length; i++) {
+                finalArray[i] = Integer.parseInt(inputArray[i]);
+            }
+            return finalArray;
+        } catch (NumberFormatException e){
+            return new int[]{};
+        }
     }
 }

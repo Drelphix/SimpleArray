@@ -11,12 +11,13 @@ import org.apache.logging.log4j.Logger;
 public class SortImpl implements Sort {
 
     private static final Logger logger = LogManager.getLogger();
+    private static final String ARRAY_IS_SORTED =  "Массив уже отсортирован. Его длина равна 1 элементу";
 
     public void sortQuickSort(SimpleArray simpleArray, int left, int right) {
         try {
             ArrayValidator.checkArrayLength(simpleArray.getArray());
             if (simpleArray.getArray().length == 1) {
-                logger.info("Массив уже отсортирован. Его длина равна 1 элементу");
+                logger.info(ARRAY_IS_SORTED);
                 return;
             }
             if (left >= right) {
@@ -58,7 +59,7 @@ public class SortImpl implements Sort {
         try {
             ArrayValidator.checkArrayLength(simpleArray.getArray());
             if (simpleArray.getArray().length == 1) {
-                logger.info("Массив уже отсортирован. Его длина равна 1 элементу");
+                logger.info(ARRAY_IS_SORTED);
                 return;
             }
             boolean sorted = false;
@@ -81,7 +82,7 @@ public class SortImpl implements Sort {
         try {
             ArrayValidator.checkArrayLength(simpleArray.getArray());
             if (simpleArray.getArray().length == 1) {
-                logger.info("Массив уже отсортирован. Его длина равна 1 элементу");
+                logger.info(ARRAY_IS_SORTED);
                 return;
             }
         } catch (ArrayException e) {

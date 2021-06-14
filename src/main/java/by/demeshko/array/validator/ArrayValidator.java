@@ -28,7 +28,7 @@ public class ArrayValidator {
         }
     }
 
-    public static int[] checkCorrectArrayLine(String line, String regex){
+    public static int[] checkCorrectArrayLine(String line, String regex) {
         Pattern arrayPattern = Pattern.compile(regex);
         String[] inputArray = arrayPattern.split(line);
         int[] finalArray = new int[inputArray.length];
@@ -37,7 +37,7 @@ public class ArrayValidator {
                 finalArray[i] = Integer.parseInt(inputArray[i]);
             }
             return finalArray;
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             return new int[]{};
         }
     }

@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 public class SortImpl implements Sort {
 
     private static final Logger logger = LogManager.getLogger();
-    private static final String ARRAY_IS_SORTED =  "Массив уже отсортирован. Его длина равна 1 элементу";
+    private static final String ARRAY_IS_SORTED = "Массив уже отсортирован. Его длина равна 1 элементу";
 
     public void sortQuickSort(SimpleArray simpleArray, int left, int right) {
         try {
@@ -90,7 +90,7 @@ public class SortImpl implements Sort {
         }
     }
 
-     public void swapItems(SimpleArray simpleArray, int first, int second) {
+    public void swapItems(SimpleArray simpleArray, int first, int second) {
         int temp = simpleArray.getItem(first);
         int secondValue = simpleArray.getItem(second);
 

@@ -27,7 +27,7 @@ public class SimpleArrayReaderImpl implements SimpleArrayReader {
         this.filePath = filePath;
     }
 
-    public SimpleArray readFile() {
+    public SimpleArray readFile() { //fixme
         try {
             filePath.isEmpty();
         } catch (NullPointerException e) {

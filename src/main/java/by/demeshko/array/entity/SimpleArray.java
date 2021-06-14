@@ -14,12 +14,6 @@ public class SimpleArray {
     }
 
     public int[] getArray() {
-        try {
-            ArrayValidator.checkArrayLength(array);
-        } catch (ArrayException e){
-            logger.error("Массив не задан!");
-            e.printStackTrace();
-        }
         return array;
     }
 

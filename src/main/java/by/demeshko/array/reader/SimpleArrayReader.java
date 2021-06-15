@@ -1,8 +1,8 @@
 package by.demeshko.array.reader;
 
-import by.demeshko.array.entity.SimpleArray;
+import java.util.List;
 
 public interface SimpleArrayReader  {
 
-    public SimpleArray readFile();
+    public List<String> readFile();
 }

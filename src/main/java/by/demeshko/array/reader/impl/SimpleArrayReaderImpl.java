@@ -17,8 +17,7 @@ import java.util.List;
 public class SimpleArrayReaderImpl implements SimpleArrayReader {
     private static final String DEFAULT_ARRAY_FILE_PATH = "D:\\java\\SimpleArray\\files\\SimpleArrayTest.txt";
     private static final Logger logger = LogManager.getLogger();
-    private static final String REGEX = ",\\s|;\\s|;|\\s-\\s|\\s";
-    private String filePath;
+    private String filePath = "";
 
     public SimpleArrayReaderImpl() {
     }
@@ -27,26 +26,17 @@ public class SimpleArrayReaderImpl implements SimpleArrayReader {
         this.filePath = filePath;
     }
 
-    public SimpleArray readFile() { //fixme
-        try {
-            filePath.isEmpty();
-        } catch (NullPointerException e) {
+    public List<String> readFile() {
+        if(filePath.isEmpty()){
             filePath = DEFAULT_ARRAY_FILE_PATH;
         }
-        int[] finalArray = new int[0];
-        try {
-            FileReader fileReader = new FileReader(filePath);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line = bufferedReader.readLine();
-            while (line != null) {
-                int[] array = ArrayValidator.checkCorrectArrayLine(line, REGEX);
-                if (array.length > 0) {
-                    finalArray = combineArrays(finalArray,array);
-                }
+        List<String> arrayList = new ArrayList<>();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))){
+            String line = null;
+            do{
                 line = bufferedReader.readLine();
-            }
-            bufferedReader.close();
-            fileReader.close();
+                arrayList.add(line);
+            }while (line!=null);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             logger.error("Файл по указанному пути не был найден!");
@@ -54,20 +44,8 @@ public class SimpleArrayReaderImpl implements SimpleArrayReader {
             e.printStackTrace();
             logger.error("Файл пустой!");
         }
-        return new SimpleArray(finalArray);
+        return arrayList;
     }
 
-    private int[] combineArrays(int[] firstArray, int[] secondArray){
-        int[] sum = new int[firstArray.length+secondArray.length];
-        int count = 0;
-        for (int i = 0; i < firstArray.length; i++) {
-            sum[i] = firstArray[i];
-            count++;
-        }
-        for (int i = 0; i < secondArray.length; i++) {
-            sum[count] = secondArray[i];
-            count++;
-        }
-        return sum;
-    }
+
 }

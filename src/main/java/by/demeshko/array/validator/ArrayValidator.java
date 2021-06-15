@@ -22,23 +22,8 @@ public class ArrayValidator {
         }
     }
 
-    public static void checkSortedArray(int[] array) throws ArrayException {
-        if (array.length == 1) {
-            throw new ArrayException("Массив состоит из 1 элемента, значит он уже отсортирован!");
-        }
-    }
 
-    public static int[] checkCorrectArrayLine(String line, String regex) {
-        Pattern arrayPattern = Pattern.compile(regex);
-        String[] inputArray = arrayPattern.split(line);
-        int[] finalArray = new int[inputArray.length];
-        try {
-            for (int i = 0; i < inputArray.length; i++) {
-                finalArray[i] = Integer.parseInt(inputArray[i]);
-            }
-            return finalArray;
-        } catch (NumberFormatException e) {
-            return new int[]{};
-        }
+    public static boolean checkCorrectArrayLine(String line, String regex) {
+        return true;
     }
 }

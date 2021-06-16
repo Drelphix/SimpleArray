@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface SimpleArrayCreator {
 
-    public SimpleArray createSimpleArray(List<int[]> arrays);
+    SimpleArray createSimpleArray(List<int[]> arrays);
 }

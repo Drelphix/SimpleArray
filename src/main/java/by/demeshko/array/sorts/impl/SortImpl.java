@@ -32,6 +32,25 @@ public class SortImpl implements Sort {
         }
     }
 
+    public void sortMergeSort(int[] array, int length) {
+        if (length < 2) {
+            return;
+        }
+        int mid = length / 2;
+        int[] l = new int[mid];
+        int[] r = new int[length - mid];
+
+        for (int i = 0; i < mid; i++) {
+            l[i] = array[i];
+        }
+        for (int i = mid; i < length; i++) {
+            r[i - mid] = array[i];
+        }
+        sortMergeSort(l, mid);
+        sortMergeSort(r, length - mid);
+        merge(array, l, r, mid, length - mid);
+    }
+
     public void sortQuickSort(SimpleArray simpleArray, int left, int right) {
         try {
             ArrayValidator.checkArrayLength(simpleArray.getArray());
@@ -97,25 +116,6 @@ public class SortImpl implements Sort {
 
     }
 
-    public void sortMergeSort(int[] array, int length) {
-        if (length < 2) {
-            return;
-        }
-        int mid = length / 2;
-        int[] l = new int[mid];
-        int[] r = new int[length - mid];
-
-        for (int i = 0; i < mid; i++) {
-            l[i] = array[i];
-        }
-        for (int i = mid; i < length; i++) {
-            r[i - mid] = array[i];
-        }
-        sortMergeSort(l, mid);
-        sortMergeSort(r, length - mid);
-        merge(array, l, r, mid, length - mid);
-    }
-
     public void swapItems(SimpleArray simpleArray, int first, int second) {
         int temp = simpleArray.getItem(first);
         int secondValue = simpleArray.getItem(second);
@@ -123,4 +123,5 @@ public class SortImpl implements Sort {
         simpleArray.setItem(secondValue, first);
         simpleArray.setItem(temp, second);
     }
+
 }

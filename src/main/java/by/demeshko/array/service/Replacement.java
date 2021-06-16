@@ -4,5 +4,5 @@ import by.demeshko.array.entity.SimpleArray;
 
 public interface Replacement {
 
-    public void replaceIfZero(SimpleArray simpleArray);
+    void replaceIfZero(SimpleArray simpleArray);
 }

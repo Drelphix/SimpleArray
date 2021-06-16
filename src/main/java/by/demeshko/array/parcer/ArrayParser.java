@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface ArrayParser {
 
-    public List<int[]> parseStringToArray (List<String> lines);
+    List<int[]> parseStringToArray(List<String> lines);
 }

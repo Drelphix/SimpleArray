@@ -9,12 +9,12 @@ import java.util.regex.Pattern;
 
 public class ArrayParserImpl implements ArrayParser {
     private static final String ARRAY_SPLIT_REGEX = ",\\s|;\\s|;|\\s-\\s|\\s";
-    private static final String ARRAY_VALIDATE_REGEX = "";
+    private static final String ARRAY_VALIDATE_REGEX = "-?\\d+";
 
-    public List<int[]> parseStringToArray (List<String> lines){
+    public List<int[]> parseStringToArray(List<String> lines) {
         List<int[]> arrayList = new ArrayList<>();
         for (String line : lines) {
-            if(ArrayValidator.checkCorrectArrayLine(line,ARRAY_VALIDATE_REGEX)) {
+            if (ArrayValidator.checkCorrectArrayLine(line, ARRAY_SPLIT_REGEX, ARRAY_VALIDATE_REGEX)) {
                 Pattern arrayPattern = Pattern.compile(ARRAY_SPLIT_REGEX);
                 String[] inputArray = arrayPattern.split(line);
                 int[] finalArray = new int[inputArray.length];

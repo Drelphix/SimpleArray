@@ -6,9 +6,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class ReplacementTest {
-    Replacement replacementImpl = new ReplacementImpl();
     public static final int[] ARRAY_WITH_ZERO = {0, 5, 4, 8, -1, 0, 14, -12, -6};
     public static final int[] EXPECTED_ARRAY = {-5, 5, 4, 8, -1, -5, 14, -12, -6};
+    Replacement replacementImpl = new ReplacementImpl();
 
     @Test
     public void testReplaceIfZero() {

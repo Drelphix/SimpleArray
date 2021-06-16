@@ -4,11 +4,11 @@ import by.demeshko.array.entity.SimpleArray;
 
 public interface Sort {
 
-    public void sortQuickSort(SimpleArray simpleArray, int left, int right);
+    void sortQuickSort(SimpleArray simpleArray, int left, int right);
 
-    public void sortBubbleSort(SimpleArray simpleArray);
+    void sortBubbleSort(SimpleArray simpleArray);
 
-    public void sortMergeSort(int[] array, int length);
+    void sortMergeSort(int[] array, int length);
 
-    public  void swapItems(SimpleArray simpleArray, int first, int second);
+    void swapItems(SimpleArray simpleArray, int first, int second);
 }

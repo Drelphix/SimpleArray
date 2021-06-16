@@ -24,22 +24,24 @@ public class SimpleArrayReaderImpl implements SimpleArrayReader {
     }
 
     public List<String> readFile() {
-        if(filePath.isEmpty()){
+        if (filePath.isEmpty()) {
             filePath = DEFAULT_ARRAY_FILE_PATH;
         }
         List<String> arrayList = new ArrayList<>();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))){
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
             String line = null;
-            do{
+            do {
                 line = bufferedReader.readLine();
-                arrayList.add(line);
-            }while (line!=null);
+                if (line != null) {
+                    arrayList.add(line);
+                }
+            } while (line != null);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
             logger.error("Файл по указанному пути не был найден!");
-        } catch (IOException e) {
             e.printStackTrace();
+        } catch (IOException e) {
             logger.error("Файл пустой!");
+            e.printStackTrace();
         }
         return arrayList;
     }

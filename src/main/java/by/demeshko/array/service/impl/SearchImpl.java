@@ -2,16 +2,8 @@ package by.demeshko.array.service.impl;
 
 import by.demeshko.array.entity.SimpleArray;
 import by.demeshko.array.service.Search;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import java.util.Arrays;
-import java.util.OptionalInt;
-import java.util.stream.IntStream;
 
 public class SearchImpl implements Search {
-
-    private static final Logger logger = LogManager.getLogger();
 
     public int findMaximum(SimpleArray simpleArray) {
         int max = simpleArray.getItem(0);

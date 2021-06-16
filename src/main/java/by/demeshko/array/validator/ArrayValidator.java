@@ -8,8 +8,6 @@ import java.util.regex.Pattern;
 
 public class ArrayValidator {
 
-    private static final Logger logger = LogManager.getLogger();
-
     public static void checkPosition(int position, int[] array) throws ArrayException {
         if ((position < 0) || (position >= array.length)) {
             throw new ArrayException("Запрашиваемая позиция вышла за границы массива!");
@@ -23,7 +21,14 @@ public class ArrayValidator {
     }
 
 
-    public static boolean checkCorrectArrayLine(String line, String regex) {
+    public static boolean checkCorrectArrayLine(String line, String splitRegex, String matchRegex) {
+        Pattern pattern = Pattern.compile(splitRegex);
+        String[] words = pattern.split(line);
+        for (String world : words) {
+            if (!world.matches(matchRegex)) {
+                return false;
+            }
+        }
         return true;
     }
 }

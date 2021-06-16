@@ -4,7 +4,7 @@ import by.demeshko.array.entity.SimpleArray;
 
 public interface Definition {
 
-    public double findAverage(SimpleArray simpleArray);
+    double findAverage(SimpleArray simpleArray);
 
-    public int findSum(SimpleArray simpleArray);
+    int findSum(SimpleArray simpleArray);
 }

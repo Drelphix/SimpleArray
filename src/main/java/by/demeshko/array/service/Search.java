@@ -4,11 +4,11 @@ import by.demeshko.array.entity.SimpleArray;
 
 public interface Search {
 
-    public int findMaximum(SimpleArray simpleArray);
+    int findMaximum(SimpleArray simpleArray);
 
-    public int findMinimum(SimpleArray simpleArray);
+    int findMinimum(SimpleArray simpleArray);
 
-    public int findPositive(SimpleArray simpleArray);
+    int findPositive(SimpleArray simpleArray);
 
-    public int findNegative(SimpleArray simpleArray);
+    int findNegative(SimpleArray simpleArray);
 }

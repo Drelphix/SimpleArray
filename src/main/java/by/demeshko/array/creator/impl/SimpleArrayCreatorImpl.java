@@ -7,16 +7,16 @@ import java.util.List;
 
 public class SimpleArrayCreatorImpl implements SimpleArrayCreator {
 
-    public SimpleArray createSimpleArray(List<int[]> arrays){
-    int[] finalArray = new int[0];
-        for (int i = 0; i < arrays.size()-1; i++) {
-            finalArray = combineArrays(finalArray,arrays.get(i));
+    public SimpleArray createSimpleArray(List<int[]> arrays) {
+        int[] finalArray = new int[0];
+        for (int i = 0; i < arrays.size(); i++) {
+            finalArray = combineArrays(finalArray, arrays.get(i));
         }
         return new SimpleArray(finalArray);
     }
 
-    private int[] combineArrays(int[] firstArray, int[] secondArray){
-        int[] sum = new int[firstArray.length+secondArray.length];
+    private int[] combineArrays(int[] firstArray, int[] secondArray) {
+        int[] sum = new int[firstArray.length + secondArray.length];
         int count = 0;
         for (int i = 0; i < firstArray.length; i++) {
             sum[i] = firstArray[i];

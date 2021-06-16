@@ -25,18 +25,18 @@ public class SimpleArray {
         try {
             ArrayValidator.checkPosition(position, this.array);
             return array[position];
-        } catch (ArrayException e){
+        } catch (ArrayException e) {
             logger.error("Такой позиции не существует в массиве!");
             e.printStackTrace();
         }
         return 0;
     }
 
-    public void setItem(int item, int position){
+    public void setItem(int item, int position) {
         try {
             ArrayValidator.checkPosition(position, this.array);
             this.array[position] = item;
-        } catch (ArrayException e){
+        } catch (ArrayException e) {
             logger.error("Такой позиции не существует в массиве!");
             e.printStackTrace();
         }
@@ -47,24 +47,24 @@ public class SimpleArray {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Current array is: ");
-        for (int i : this.array){
+        for (int i : this.array) {
             stringBuilder.append(i);
             stringBuilder.append(" ");
         }
         return stringBuilder.toString();
     }
 
-    public boolean equals(SimpleArray simpleArray){
-        if(simpleArray == this){
+    public boolean equals(SimpleArray simpleArray) {
+        if (simpleArray == this) {
             return true;
         }
 
-        if(simpleArray.getLength() == this.array.length) {
+        if (simpleArray.getLength() == this.array.length) {
             for (int i = 0; i < this.array.length; i++) {
-                if(simpleArray.array[i] != this.array[i]){
+                if (simpleArray.array[i] != this.array[i]) {
                     return false;
                 }
             }

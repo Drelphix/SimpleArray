@@ -1,10 +1,11 @@
 package by.demeshko.array.creator.impl;
 
+import by.demeshko.array.creator.SimpleArrayCreator;
 import by.demeshko.array.entity.SimpleArray;
 
 import java.util.List;
 
-public class SimpleArrayCreatorImpl {
+public class SimpleArrayCreatorImpl implements SimpleArrayCreator {
 
     public SimpleArray createSimpleArray(List<int[]> arrays){
     int[] finalArray = new int[0];
@@ -14,7 +15,7 @@ public class SimpleArrayCreatorImpl {
         return new SimpleArray(finalArray);
     }
 
-    public int[] combineArrays(int[] firstArray, int[] secondArray){
+    private int[] combineArrays(int[] firstArray, int[] secondArray){
         int[] sum = new int[firstArray.length+secondArray.length];
         int count = 0;
         for (int i = 0; i < firstArray.length; i++) {

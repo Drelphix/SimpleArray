@@ -1,8 +1,6 @@
 package by.demeshko.array.reader.impl;
 
-import by.demeshko.array.entity.SimpleArray;
 import by.demeshko.array.reader.SimpleArrayReader;
-import by.demeshko.array.validator.ArrayValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,11 +9,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SimpleArrayReaderImpl implements SimpleArrayReader {
-    private static final String DEFAULT_ARRAY_FILE_PATH = "D:\\java\\SimpleArray\\files\\SimpleArrayTest.txt";
+    private static final String DEFAULT_ARRAY_FILE_PATH = "./files/SimpleArrayTest.txt";
     private static final Logger logger = LogManager.getLogger();
     private String filePath = "";
 

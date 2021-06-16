@@ -13,6 +13,25 @@ public class SortImpl implements Sort {
     private static final Logger logger = LogManager.getLogger();
     private static final String ARRAY_IS_SORTED = "Массив уже отсортирован. Его длина равна 1 элементу";
 
+    private void merge(
+            int[] a, int[] l, int[] r, int left, int right) {
+
+        int i = 0, j = 0, k = 0;
+        while (i < left && j < right) {
+            if (l[i] <= r[j]) {
+                a[k++] = l[i++];
+            } else {
+                a[k++] = r[j++];
+            }
+        }
+        while (i < left) {
+            a[k++] = l[i++];
+        }
+        while (j < right) {
+            a[k++] = r[j++];
+        }
+    }
+
     public void sortQuickSort(SimpleArray simpleArray, int left, int right) {
         try {
             ArrayValidator.checkArrayLength(simpleArray.getArray());
@@ -78,16 +97,23 @@ public class SortImpl implements Sort {
 
     }
 
-    public void sortMergeSort(SimpleArray simpleArray) {  //TODO
-        try {
-            ArrayValidator.checkArrayLength(simpleArray.getArray());
-            if (simpleArray.getArray().length == 1) {
-                logger.info(ARRAY_IS_SORTED);
-                return;
-            }
-        } catch (ArrayException e) {
-            e.printStackTrace();
+    public void sortMergeSort(int[] array, int length) {
+        if (length < 2) {
+            return;
         }
+        int mid = length / 2;
+        int[] l = new int[mid];
+        int[] r = new int[length - mid];
+
+        for (int i = 0; i < mid; i++) {
+            l[i] = array[i];
+        }
+        for (int i = mid; i < length; i++) {
+            r[i - mid] = array[i];
+        }
+        sortMergeSort(l, mid);
+        sortMergeSort(r, length - mid);
+        merge(array, l, r, mid, length - mid);
     }
 
     public void swapItems(SimpleArray simpleArray, int first, int second) {

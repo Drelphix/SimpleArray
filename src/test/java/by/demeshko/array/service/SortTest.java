@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class SortImplTest {
+public class SortTest {
     public static final int[] ARRAY_OF_INT = {0, 5, 4, 8, -1, -3, 14, -12, -6};
     Sort sort = new SortImpl();
 
@@ -32,7 +32,7 @@ public class SortImplTest {
     public void testSortMergeSort(){
         SimpleArray simpleArray = new SimpleArray(ARRAY_OF_INT);
         int[] expected = sortTestArray();
-        sort.sortMergeSort(simpleArray);
+        sort.sortMergeSort(simpleArray.getArray(),simpleArray.getLength());
         Assert.assertArrayEquals(expected, simpleArray.getArray());
     }
 

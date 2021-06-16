@@ -1,12 +1,13 @@
 package by.demeshko.array.parcer.impl;
 
+import by.demeshko.array.parcer.ArrayParser;
 import by.demeshko.array.validator.ArrayValidator;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class ArrayParserImpl {
+public class ArrayParserImpl implements ArrayParser {
     private static final String ARRAY_SPLIT_REGEX = ",\\s|;\\s|;|\\s-\\s|\\s";
     private static final String ARRAY_VALIDATE_REGEX = "";
 

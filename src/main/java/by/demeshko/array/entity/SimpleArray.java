@@ -58,6 +58,10 @@ public class SimpleArray {
     }
 
     public boolean equals(SimpleArray simpleArray){
+        if(simpleArray == this){
+            return true;
+        }
+
         if(simpleArray.getLength() == this.array.length) {
             for (int i = 0; i < this.array.length; i++) {
                 if(simpleArray.array[i] != this.array[i]){

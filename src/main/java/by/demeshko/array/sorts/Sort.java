@@ -8,7 +8,7 @@ public interface Sort {
 
     public void sortBubbleSort(SimpleArray simpleArray);
 
-    public void sortMergeSort(SimpleArray simpleArray);
+    public void sortMergeSort(int[] array, int length);
 
     public  void swapItems(SimpleArray simpleArray, int first, int second);
 }

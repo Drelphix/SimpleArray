@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 
 public class SearchImpl implements Search {
 
-    private static final Logger logger = LogManager.getLogger("Search");
+    private static final Logger logger = LogManager.getLogger();
 
     public int findMaximum(SimpleArray simpleArray) {
         int max = simpleArray.getItem(0);

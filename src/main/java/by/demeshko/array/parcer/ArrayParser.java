@@ -1,4 +1,8 @@
 package by.demeshko.array.parcer;
 
-public class ArrayParser {
+import java.util.List;
+
+public interface ArrayParser {
+
+    public List<int[]> parseStringToArray (List<String> lines);
 }

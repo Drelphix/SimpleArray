@@ -1,0 +1,8 @@
+INFO  | 2021-06-18 00:29:47 | [main] impl.SimpleArrayReaderImpl (SimpleArrayReaderImpl.java:29) - File not found. Using default filepath..
+INFO  | 2021-06-18 00:31:00 | [main] impl.SimpleArrayReaderImpl (SimpleArrayReaderImpl.java:29) - File not found. Using default filepath..
+ERROR | 2021-06-18 00:31:03 | [main] entity.SimpleArray (SimpleArray.java:29) - There are no such position at array
+ERROR | 2021-06-18 00:32:46 | [main] entity.SimpleArray (SimpleArray.java:29) - There are no 5 in Current array is: 5 
+ERROR | 2021-06-18 00:37:48 | [main] entity.SimpleArray (SimpleArray.java:29) - There are no 5 in Current array is: 5 10 15 200
+INFO  | 2021-06-18 00:40:27 | [main] impl.SimpleArrayReaderImpl (SimpleArrayReaderImpl.java:29) - File not found. Using default path: ./files/SimpleArrayTest.txt
+INFO  | 2021-06-18 00:42:12 | [main] impl.SimpleArrayReaderImpl (SimpleArrayReaderImpl.java:57) - File not found. Using default path: ./files/SimpleArrayTest.txt
+INFO  | 2021-06-18 00:42:12 | [main] impl.SimpleArrayReaderImpl (SimpleArrayReaderImpl.java:29) - File not found. Using default path: ./files/SimpleArrayTest.txt

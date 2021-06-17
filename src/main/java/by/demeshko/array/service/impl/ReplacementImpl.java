@@ -19,7 +19,7 @@ public class ReplacementImpl implements Replacement {
                 }
             }
         } catch (ArrayException e) {
-            logger.info("Невозможно заменить в пустом массиве!");
+            logger.error("Can't replace items.Current array is empty.");
         }
     }
 }

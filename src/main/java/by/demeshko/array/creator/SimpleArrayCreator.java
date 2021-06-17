@@ -7,4 +7,6 @@ import java.util.List;
 public interface SimpleArrayCreator {
 
     SimpleArray createSimpleArray(List<int[]> arrays);
+
+    SimpleArray createSimpleArrayStream(int[] array);
 }

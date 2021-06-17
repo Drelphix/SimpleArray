@@ -15,6 +15,10 @@ public class SimpleArrayCreatorImpl implements SimpleArrayCreator {
         return new SimpleArray(finalArray);
     }
 
+    public SimpleArray createSimpleArrayStream(int[] array) {
+        return new SimpleArray(array);
+    }
+
     private int[] combineArrays(int[] firstArray, int[] secondArray) {
         int[] sum = new int[firstArray.length + secondArray.length];
         int count = 0;
@@ -22,8 +26,8 @@ public class SimpleArrayCreatorImpl implements SimpleArrayCreator {
             sum[i] = firstArray[i];
             count++;
         }
-        for (int i = 0; i < secondArray.length; i++) {
-            sum[count] = secondArray[i];
+        for (int j : secondArray) {
+            sum[count] = j;
             count++;
         }
         return sum;

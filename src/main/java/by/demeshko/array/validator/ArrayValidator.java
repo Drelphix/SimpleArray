@@ -1,22 +1,21 @@
 package by.demeshko.array.validator;
 
 import by.demeshko.array.exception.ArrayException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class ArrayValidator {
 
     public static void checkPosition(int position, int[] array) throws ArrayException {
         if ((position < 0) || (position >= array.length)) {
-            throw new ArrayException("Запрашиваемая позиция вышла за границы массива!");
+            throw new ArrayException();
         }
     }
 
     public static void checkArrayLength(int[] array) throws ArrayException {
         if (array.length == 0) {
-            throw new ArrayException("Массив пустой!");
+            throw new ArrayException();
         }
     }
 
@@ -31,4 +30,9 @@ public class ArrayValidator {
         }
         return true;
     }
+
+    public static boolean checkCorrectArrayLineStream(String line, String splitRegex, String matchRegex) {
+        return Arrays.stream(line.split(splitRegex)).anyMatch(i -> i.matches(matchRegex));
+    }
+
 }

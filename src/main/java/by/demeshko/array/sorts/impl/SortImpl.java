@@ -11,45 +11,8 @@ import org.apache.logging.log4j.Logger;
 public class SortImpl implements Sort {
 
     private static final Logger logger = LogManager.getLogger();
-    private static final String ARRAY_IS_SORTED = "Массив уже отсортирован. Его длина равна 1 элементу";
+    private static final String ARRAY_IS_SORTED = "Array is already sorted.";
 
-    private void merge(
-            int[] a, int[] l, int[] r, int left, int right) {
-
-        int i = 0, j = 0, k = 0;
-        while (i < left && j < right) {
-            if (l[i] <= r[j]) {
-                a[k++] = l[i++];
-            } else {
-                a[k++] = r[j++];
-            }
-        }
-        while (i < left) {
-            a[k++] = l[i++];
-        }
-        while (j < right) {
-            a[k++] = r[j++];
-        }
-    }
-
-    public void sortMergeSort(int[] array, int length) {
-        if (length < 2) {
-            return;
-        }
-        int mid = length / 2;
-        int[] l = new int[mid];
-        int[] r = new int[length - mid];
-
-        for (int i = 0; i < mid; i++) {
-            l[i] = array[i];
-        }
-        for (int i = mid; i < length; i++) {
-            r[i - mid] = array[i];
-        }
-        sortMergeSort(l, mid);
-        sortMergeSort(r, length - mid);
-        merge(array, l, r, mid, length - mid);
-    }
 
     public void sortQuickSort(SimpleArray simpleArray, int left, int right) {
         try {
@@ -63,29 +26,26 @@ public class SortImpl implements Sort {
             }
             int point = left + (right - left) / 2;
             int middle = simpleArray.getItem(point);
-
-            int l = left;
-            int r = right;
-            while (l <= r) {
-                while (simpleArray.getItem(l) < middle) {
-                    l++;
+            int leftPoint = left;
+            int rightPoint = right;
+            while (leftPoint <= rightPoint) {
+                while (simpleArray.getItem(leftPoint) < middle) {
+                    leftPoint++;
                 }
-                while (simpleArray.getItem(r) > middle) {
-                    r--;
+                while (simpleArray.getItem(rightPoint) > middle) {
+                    rightPoint--;
                 }
-                if (l <= r) {
-                    swapItems(simpleArray, l, r);
-                    l++;
-                    r--;
+                if (leftPoint <= rightPoint) {
+                    swapItems(simpleArray, leftPoint, rightPoint);
+                    leftPoint++;
+                    rightPoint--;
                 }
-
             }
-            if (left < l) {
-                sortQuickSort(simpleArray, left, r);
-
+            if (left < leftPoint) {
+                sortQuickSort(simpleArray, left, rightPoint);
             }
-            if (right > r) {
-                sortQuickSort(simpleArray, l, right);
+            if (right > rightPoint) {
+                sortQuickSort(simpleArray, leftPoint, right);
             }
         } catch (ArrayException e) {
             e.printStackTrace();
@@ -113,7 +73,23 @@ public class SortImpl implements Sort {
         } catch (ArrayException e) {
             e.printStackTrace();
         }
+    }
 
+    public void sortMergeSort(int[] array, int length) {
+        if (length < 2) {
+            return;
+        }
+        int middle = length / 2;
+        int[] leftArray = new int[middle];
+        int[] rightArray = new int[length - middle];
+
+        System.arraycopy(array, 0, leftArray, 0, middle);
+        for (int i = middle; i < length; i++) {
+            rightArray[i - middle] = array[i];
+        }
+        sortMergeSort(leftArray, middle);
+        sortMergeSort(rightArray, length - middle);
+        merge(array, leftArray, rightArray, middle, length - middle);
     }
 
     public void swapItems(SimpleArray simpleArray, int first, int second) {
@@ -124,4 +100,23 @@ public class SortImpl implements Sort {
         simpleArray.setItem(temp, second);
     }
 
+    private void merge(int[] array, int[] leftArray,
+                       int[] rightArray, int left, int right) {
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        while (i < left && j < right) {
+            if (leftArray[i] <= rightArray[j]) {
+                array[k++] = leftArray[i++];
+            } else {
+                array[k++] = rightArray[j++];
+            }
+        }
+        while (i < left) {
+            array[k++] = leftArray[i++];
+        }
+        while (j < right) {
+            array[k++] = rightArray[j++];
+        }
+    }
 }

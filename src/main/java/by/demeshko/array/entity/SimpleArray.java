@@ -26,8 +26,9 @@ public class SimpleArray {
             ArrayValidator.checkPosition(position, this.array);
             return array[position];
         } catch (ArrayException e) {
-            logger.error("Такой позиции не существует в массиве!");
-            e.printStackTrace();
+            logger.error(new StringBuilder().append("There are no ")
+                    .append(position).append(" in ")
+                    .append(this));
         }
         return 0;
     }
@@ -37,8 +38,9 @@ public class SimpleArray {
             ArrayValidator.checkPosition(position, this.array);
             this.array[position] = item;
         } catch (ArrayException e) {
-            logger.error("Такой позиции не существует в массиве!");
-            e.printStackTrace();
+            logger.error(new StringBuilder().append("There are no ")
+                    .append(position).append(" in ")
+                    .append(this));
         }
     }
 
@@ -61,7 +63,6 @@ public class SimpleArray {
         if (simpleArray == this) {
             return true;
         }
-
         if (simpleArray.getLength() == this.array.length) {
             for (int i = 0; i < this.array.length; i++) {
                 if (simpleArray.array[i] != this.array[i]) {

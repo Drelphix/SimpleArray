@@ -15,7 +15,7 @@ public class DefinitionImpl implements Definition {
             ArrayValidator.checkArrayLength(simpleArray.getArray());
             return (double) findSum(simpleArray) / simpleArray.getLength();
         } catch (ArrayException e) {
-            logger.error("Деление на 0 невозможно!");
+            logger.error("Сan not be divided by zero!");
         }
         return 0.0;
     }
